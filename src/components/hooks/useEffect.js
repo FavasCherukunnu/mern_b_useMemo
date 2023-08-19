@@ -1,0 +1,61 @@
+import { useEffect, useState } from "react";
+
+export function Counter(){
+
+
+    const[
+        value,
+        setValue
+    ] = useState(0);
+
+    const[boom,setboom] = useState(false);
+    const [color,setColor] = useState('white');
+
+    useEffect(
+        ()=>{
+            const id = setTimeout(
+                ()=>{
+                    console.log('called useeffect');
+                    setboom(true);
+                },3000
+            )
+
+            return ()=>{
+                setboom(false);
+                clearTimeout(id);
+            }
+        },
+        [value]
+    )
+
+
+    return (
+        <div style={{backgroundColor:color}}>
+            <center>
+                <button key={'top'} onClick={()=>{setValue(value+1)}}><h3>Incriment</h3></button>
+                <br/>
+                <h1>{value}</h1>
+                <br/>
+                <button key={'bottom'} onClick={
+                    ()=>{setValue(
+                        (val)=>{
+                            return val-5;
+                        }
+                    )}
+                    }><h3>Incriment</h3></button>
+                <br/>
+                <button key={'green'}  onClick={()=>{
+                    setColor('green')
+                }}>Green</button>
+                <button key={'yellow'}  onClick={()=>{
+                    setColor('yellow')
+                }}>Yellow</button>
+                <div>
+                    {boom?<h1>BOOOOM!!</h1>:null}
+                </div> 
+            </center>
+            
+        </div>
+    );
+
+}
