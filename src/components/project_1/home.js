@@ -3,6 +3,12 @@ import Card from "./card/card";
 import './home.css';
 import DropDown from "./dropDown";
 
+/*********************
+ * a list using class component
+ * 
+ * 
+ */
+
 var dat = [
     {
         id: 1,

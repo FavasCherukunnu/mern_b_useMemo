@@ -25,6 +25,11 @@ export function UseMemoExample(){
         setValue
     ] = useState(0);
 
+    //this sampleObj will not re-render the memo component because it is state obj. state obj has same reference
+    const [sampleObj,setSampleObj] = useState({
+        name:'favas'
+    })
+
     const [color,setColor] = useState('white');
 
     const botComponentData = {
@@ -58,7 +63,7 @@ export function UseMemoExample(){
                 <button key={'yellow'}  onClick={()=>{
                     setColor('yellow')
                 }}>Yellow</button>
-                <BottDiv dat={dat}/>
+                <BottDiv dat={dat} sampleObj={sampleObj}/>
             </center>
         </div>
     );

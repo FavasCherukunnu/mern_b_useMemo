@@ -13,6 +13,7 @@ export function Counter(){
 
     useEffect(
         ()=>{
+            //seting timer when component mount - componentDidMount
             const id = setTimeout(
                 ()=>{
                     console.log('called useeffect');
@@ -20,6 +21,7 @@ export function Counter(){
                 },3000
             )
 
+            //operations that need to be performed when the component unmount - componentDidUnmount
             return ()=>{
                 setboom(false);
                 clearTimeout(id);
